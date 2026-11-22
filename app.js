@@ -7,14 +7,9 @@ function node(tag, text, cls) {
 }
 const fold = text => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 async function start() {
-  const response = await fetch('catalog.json');
+  const response = await fetch('catalog.json', {cache: 'no-cache'});
   if (!response.ok) throw Error();
   const data = await response.json();
-  if (data.download) {
-    const link = node('a', 'Tải file mod', 'download');
-    link.href = data.download;
-    el('downloadSlot').replaceWith(link);
-  }
   if (data.summary) el('summary').textContent = data.summary;
   el('stats').textContent = data.rows.length + ' skin · ' + data.heroes + ' tướng';
   data.states.forEach((s, i) => el('state').add(new Option(s, i)));
