@@ -15,8 +15,9 @@ async function start() {
   data.states.forEach((s, i) => el('state').add(new Option(s, i)));
   const search = data.rows.map(([id, name,,, sources]) => fold([id, name, ...sources.map(s => s+' '+data.sources[s])].join(' ')));
   let page = 0;
-  const size = 12;
+
   function render() {
+    const size = Number(el('size').value);
     const q = fold(el('query').value.trim());
     const state = el('state').value;
     const matches = data.rows.filter((r, i) => search[i].includes(q) && (state === '' || +state === r[2]));
@@ -44,7 +45,13 @@ async function start() {
     el('grid').replaceChildren(...cards);
     const pages = Math.ceil(matches.length/size);
     el('message').textContent = pages ? '' : 'Không tìm thấy skin phù hợp.';
-    el('page').textContent = pages ? 'Trang '+(page+1)+' / '+pages : '';
+    const picker = el('page');
+    if (picker.options.length !== pages) {
+      picker.replaceChildren(...Array.from({length: pages}, (_, i) => new Option(i + 1, i)));
+    }
+    picker.value = String(page);
+    el('pages').textContent = pages;
+    el('pager').hidden = pages === 0;
     el('prev').hidden = page === 0;
     el('next').hidden = page+1 >= pages;
   }
@@ -52,6 +59,8 @@ async function start() {
   function move(delta) { page += delta; render(); el('library').scrollIntoView(); }
   el('query').oninput = reset;
   el('state').onchange = reset;
+  el('size').onchange = reset;
+  el('page').onchange = () => move(Number(el('page').value) - page);
   el('next').onclick = () => move(1);
   el('prev').onclick = () => move(-1);
   render();
