@@ -42,7 +42,7 @@ async function start() {
       const details = node('details');
       const list = node('ul');
       sources.forEach(s => list.append(node('li',data.sources[s]+' · '+s)));
-      details.append(node('summary','Skin cần chọn ('+sources.length+')'),list);
+      details.append(node('summary','Skin Bị Đè Lên ('+sources.length+')'),list);
       card.append(details);
       return card;
     });
