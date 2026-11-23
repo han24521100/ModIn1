@@ -1,13 +1,61 @@
 <!doctype html>
 <html lang="vi">
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#112a29"><title>ModIn1 · Thư viện skin Liên Quân</title>
-<link rel="stylesheet" href="style.css?v=3"><script defer src="app.js?v=3"></script>
-<header><div class="wrap top"><a class="brand" href="./"><b>M</b> ModIn1</a><nav><a href="#download">Bản mod</a><a href="#library">Thư viện skin</a></nav></div></header>
-<main class="wrap">
-<section class="banner" id="download"><div><span class="eyebrow">LIÊN QUÂN MOBILE</span><h1>Bản mod nhiều skin</h1><p id="summary">Tình trạng bản mod đang được cập nhật.</p><!--download--><a class="download" href="https://link4sub.com/4rpdyb9c">Tải file mod</a><!--/download--></div><div class="art" aria-hidden="true"><img src="https://dl.ops.kgvn.garenanow.com/hok/VN/HeroHeadPath/301056head.jpg" alt=""><img src="https://dl.ops.kgvn.garenanow.com/hok/VN/HeroHeadPath/3010622head.jpg" alt=""><img src="https://dl.ops.kgvn.garenanow.com/hok/VN/HeroHeadPath/3010714head.jpg" alt=""></div></section>
-<section id="library"><div class="head"><h2>Thư viện skin</h2><span id="stats"></span></div>
-<div class="filters"><input type="search" id="query" aria-label="Tìm tên tướng, skin hoặc ID" placeholder="Tìm tên tướng, skin hoặc ID…"><select id="state" aria-label="Lọc tình trạng"><option value="">Tất cả tình trạng</option></select>
-<label class="page-size">Skin mỗi trang <select id="size"><option>12</option><option>24</option><option>48</option><option>96</option></select></label></div>
-<div id="grid"></div><p id="message" role="status"></p><div class="pager" id="pager" hidden><button id="prev" hidden>Trang trước</button><label>Trang <select id="page"></select> / <span id="pages"></span></label><button id="next" hidden>Trang sau</button></div>
-</section></main><footer class="wrap">ModIn1 · Liên Quân Mobile</footer></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#193e36">
+  <title>ModIn1 · Thư viện skin Liên Quân</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script defer src="app.js?v=4"></script>
+</head>
+<body>
+  <a class="skip" href="#library">Đến danh sách skin</a>
+  <header class="mast">
+    <div class="wrap mast-inner">
+      <a class="brand" href="./"><b aria-hidden="true">M</b> ModIn1</a>
+      <span>Liên Quân Mobile</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="banner" id="download" aria-labelledby="title">
+      <div><h1 id="title">Bản mod nhiều skin</h1>
+        <p id="summary" hidden></p>
+      </div>
+      <!--download--><a class="download" href="https://link4sub.com/4rpdyb9c">Tải file mod</a><!--/download-->
+    </section>
+
+    <section id="library" aria-labelledby="library-title">
+      <div class="heading"><h2 id="library-title">Tra cứu skin</h2><span id="stats"></span></div>
+      <div class="filters">
+        <label class="search">Tìm tướng hoặc skin
+          <input id="query" type="search" placeholder="Nhập tên hoặc ID, ví dụ Krixi" autocomplete="off">
+        </label>
+        <label>Tình trạng
+          <select id="state"><option value="">Tất cả tình trạng</option></select>
+        </label>
+        <label>Skin mỗi trang
+          <select id="size"><option>12</option><option>24</option><option>48</option><option>96</option></select>
+        </label>
+      </div>
+      <div class="results-bar">
+        <p role="status" id="message">Đang tải danh sách skin…</p>
+        <label id="top-jump" hidden>Đến trang <select id="top-page"></select></label>
+      </div>
+      <div class="catalog" id="catalog" hidden>
+        <div class="column-head" aria-hidden="true">
+          <span>Skin sau khi mod</span><span>Chọn trong game</span><span>Tình trạng</span>
+        </div>
+        <div id="grid"></div>
+      </div>
+      <div class="empty" id="empty" hidden>
+        <button type="button" id="clear">Xóa bộ lọc</button>
+      </div>
+      <nav class="pager" id="pager" aria-label="Chuyển trang danh sách skin" hidden>
+        <button id="prev">Trang trước</button>
+        <label>Trang <select id="page"></select> / <span id="pages"></span></label>
+        <button id="next">Trang sau</button>
+      </nav>
+    </section>
+  </main>
+</body>
+</html>
